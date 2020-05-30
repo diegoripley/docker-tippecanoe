@@ -1,0 +1,33 @@
+---
+resources:
+- name: tippecanoe
+  type: git
+  icon: github
+  source:
+    branch: master
+    uri: https://github.com/mapbox/tippecanoe
+- name: docker-tippecanoe
+  type: git
+  icon: github
+  source:
+    branch: master
+    uri: https://github.com/diegoripley/docker-tippecanoe
+- name: push-docker-tippecanoe-image
+  type: docker-image
+  icon: docker
+  source:
+    repository: registry.diegoripley.ca:443/ripledi/tippecanoe
+    username: ((docker_username))
+    password: ((docker_password))
+    insecure_registries: ["registry.diegoripley.ca:443"]
+    registry_mirror: https://registry-mirror.diegoripley.ca:443
+jobs:
+- name: build
+  plan:
+  - get: tippecanoe
+    trigger: true
+  - get: docker-tippecanoe
+    trigger: true
+  - put: push-docker-tippecanoe-image
+    params:
+      build: docker-tippecanoe
