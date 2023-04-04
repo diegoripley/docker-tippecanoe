@@ -1,7 +1,7 @@
 ![CI](https://ci.diegoripley.ca/api/v1/teams/main/pipelines/tippecanoe/badge)
 
 # docker-tippecanoe
-Docker image for [tippecanoe](https://github.com/mapbox/tippecanoe)
+Docker image for [tippecanoe](https://github.com/felt/tippecanoe)
 
 ## Usage
 
